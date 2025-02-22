@@ -21,6 +21,11 @@ namespace WebApplication1.Controllers
                 // Process employees
                 return Ok(employees);
             }
+            else if (model is note note)
+            {
+                // Process note
+                return Ok(note);
+            }
             else
             {
                 return BadRequest("Invalid XML input.");
@@ -28,3 +33,4 @@ namespace WebApplication1.Controllers
         }
     }
 }
+

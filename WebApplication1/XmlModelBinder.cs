@@ -28,12 +28,17 @@ public class XmlModelBinder : IModelBinder
             {
                 bindingContext.Result = ModelBindingResult.Success(result);
             }
+            else if (TryDeserializeXml<note>(xmlInput, out result))
+            {
+                bindingContext.Result = ModelBindingResult.Success(result);
+            }
             else
             {
                 bindingContext.Result = ModelBindingResult.Failed();
             }
         }
 
+        return;
     }
 
     private bool TryDeserializeXml<T>(string xmlInput, out object result)
@@ -54,3 +59,4 @@ public class XmlModelBinder : IModelBinder
         }
     }
 }
+
